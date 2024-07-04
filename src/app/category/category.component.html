@@ -1,0 +1,54 @@
+<table class="category">
+  <thead class="category-thead">
+    <tr>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input type="text" #nameInput placeholder="Nom de la catégorie" />
+      </td>
+      <td>
+        <input type="text" #descriptionInput placeholder="Description" />
+      </td>
+      <td>
+        <!-- Bouton d'action pour créer une catégorie -->
+        <button (click)="createCategory()">Créer</button>
+      </td>
+    </tr>
+    <tr *ngFor="let category of categories">
+      <td>{{ category.name }}</td>
+      <td>{{ category.description }}</td>
+      <td>
+        <!-- Boutons d'action pour modifier et supprimer une catégorie -->
+        <button (click)="selectCategory(category)">Modifier</button>
+        <button (click)="deleteCategory(category)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="selectedCategory">
+  <h3>Modifier la catégorie</h3>
+  <form (submit)="updateCategory()">
+    <label>Nom :</label>
+    <input
+      type="text"
+      [(ngModel)]="selectedCategory.name"
+      name="name"
+      required
+    /><br />
+    <label>Description :</label>
+    <input
+      type="text"
+      [(ngModel)]="selectedCategory.description"
+      name="description"
+      required
+    /><br />
+    <button type="submit">Enregistrer</button>
+    <button type="button" (click)="clearSelectedCategory()">Annuler</button>
+  </form>
+</div>
