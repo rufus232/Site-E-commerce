@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@500&display=swap");
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: #e0e0e0;
+  color: #666666;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Poppins", sans-serif;
+}
+/* Navbar styles */
+.navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: "Open Sans", sans-serif;
+
+}
+
+.navbar .logo img {
+  height: 40px; /* Taille du logo */
+  vertical-align: middle;
+}
+
+.navbar .nav-links {
+  list-style-type: none;
+  text-align: right;
+  margin-top: 5px;
+}
+
+.navbar .nav-links li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.navbar .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: color 0.3s;
+}
+
+.navbar .nav-links li a:hover {
+  color: #ffd700; /* Couleur au survol */
+}
+
+.navbar .nav-links li a i {
+  margin-right: 5px;
+}
