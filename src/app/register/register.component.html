@@ -1,0 +1,21 @@
+<form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+  <label for="lastname">Nom:</label>
+  <input id="lastname" type="text" formControlName="lastName">
+
+  <label for="firstname">Prenom:</label>
+  <input id="firstname" type="text" formControlName="firstName">
+
+  <label for="email">Email:</label>
+  <input id="email" type="email" formControlName="email">
+  <div *ngIf="RegisterForm.get('email')?.invalid && (RegisterForm.get('email')?.dirty || RegisterForm.get('email')?.touched)" class="error">
+    Email Invalide
+  </div>
+
+  <label for="password">Mot de passe:</label>
+  <input id="password" type="text" formControlName="password">
+  <div *ngIf="RegisterForm.get('password')?.invalid && (RegisterForm.get('password')?.dirty || RegisterForm.get('password')?.touched)" class="error">
+    8 caractères minimum
+  </div>
+
+  <button type="submit" [disabled]="!RegisterForm.valid">S'inscrire</button>
+</form>
