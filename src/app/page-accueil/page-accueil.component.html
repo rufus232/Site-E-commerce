@@ -74,18 +74,21 @@
         }
     </style>
 
-<body>
+    <body>
 
+ <div class="container">
   <div class="produits">
-    <div *ngFor="let product of products" class="card">
+    <div class="card" *ngFor="let product of products">
       <div class="card-content">
-        <h2 class="card-title">{{ product.name }}</h2>
-        <p class="card-description">{{ product.description }}</p>
-        <p class="card-price">{{ product.price | currency }}</p>
+        <h2 class="product-title">{{ product.name }}</h2>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">{{ product.prix | currency }}</p>
         <a [routerLink]="['/product', product.id]" class="btn-add-to-cart">Voir les détails</a>
       </div>
     </div>
   </div>
-
+</div>
 </body>
 </html>
+
+

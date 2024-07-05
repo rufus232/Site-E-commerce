@@ -23,6 +23,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Open Sans", sans-serif;
 
 }
+.product-price {
+  font-size: 20px;
+  color: #4CAF50;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
 
 .navbar .logo img {
   height: 40px; /* Taille du logo */

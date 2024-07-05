@@ -15,11 +15,16 @@ import { Product } from '../interface/product';
 export class PageAccueilComponent {
   products: Product[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((data: Product[]) => {
-      this.products = data;
-    });
+    this.productService.getProducts().subscribe(
+      (products) => {
+        this.products = products;
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération de la liste des produits dans le composant', error);
+      }
+    );
   }
 }
