@@ -7,7 +7,7 @@ import { DetailsComponent } from './details/details.component';
 
 export const routes: Routes = [
 
-    { path: '', redirectTo: '/page-accueil', pathMatch: 'full' },
+    { path: '', redirectTo: '/register', pathMatch: 'full' },
     { path: 'page-accueil', component: PageAccueilComponent },
     { path: 'header', component: HeaderComponent},
     { path: 'product/:id', component: DetailsComponent},
