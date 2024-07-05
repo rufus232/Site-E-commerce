@@ -1,10 +1,32 @@
+h1{
+  text-align: center;
+}
 form{
   display: flex;
   flex-direction: column;
   width: 200px;
   gap: 10px;
+  margin: auto;
+  background: lightgray;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 50px;
+}
+
+input{
+  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
 }
 
 .error{
   color: crimson;
+}
+
+button{
+  background: #4CAF50;
+  border: none;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
 }
