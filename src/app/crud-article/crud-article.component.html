@@ -1,0 +1,84 @@
+<table class="article">
+  <thead class="article-thead">
+    <tr>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Prix</th>
+      <th>Categorie</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input type="text" #nameInput placeholder="Nom de la catégorie" />
+      </td>
+      <td>
+        <input type="text" #descriptionInput placeholder="Description" />
+      </td>
+      <td>
+        <input type="number" #priceInput placeholder="Prix" />
+      </td>
+      <td>
+        <input type="number" #categorieInput placeholder="Categorie" />
+      </td>
+      <td>
+        <!-- Bouton d'action pour créer une catégorie -->
+        <button (click)="createArticle()">Créer</button>
+      </td>
+    </tr>
+    @for (article of articles$ | async; track article?.name){
+    <tr>
+      <td>{{ article.name }}</td>
+      <td>{{ article.description }}</td>
+      <td>{{ article?.prix }}</td>
+      <td>{{article?.category}}</td>
+         <td>
+        <button (click)="selectArticle(article)">Modifier</button>
+        <button (click)="deleteArticle(article)">Supprimer</button>
+      </td>
+    </tr>
+    } @empty {
+    <p>Aucune donnée trouvée</p>
+    }
+  </tbody>
+</table> 
+
+@if(selectedArticle) {
+<h3>Modifier la catégorie</h3>
+<form (submit)="updateArticle()">
+  <label>Nom :</label>
+  <input
+    type="text"
+    [(ngModel)]="selectedArticle.name"
+    name="name"
+    required
+  /><br />
+  <label>Description :</label>
+  <input
+    type="text"
+    [(ngModel)]="selectedArticle.description"
+    name="description"
+    required
+  /><br />
+  <label>Prix :</label>
+  <input
+    type="number"
+    [(ngModel)]="selectedArticle.prix"
+    name="prix"
+    required
+  /><br />
+  <label>Categorie :</label>
+  <input
+    type="text"
+    [(ngModel)]="selectedArticle.category"
+    name="categorie"
+    required
+  /><br />
+  <button type="submit">Enregistrer</button>
+  <button type="button" (click)="clearSelectedArticle()">Annuler</button>
+</form>
+  } @else {
+  <div>Aucune categorie sélectionnée</div>
+  }
+

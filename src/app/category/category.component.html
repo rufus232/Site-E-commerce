@@ -19,36 +19,46 @@
         <button (click)="createCategory()">Créer</button>
       </td>
     </tr>
-    <tr *ngFor="let category of categories">
-      <td>{{ category.name }}</td>
-      <td>{{ category.description }}</td>
-      <td>
-        <!-- Boutons d'action pour modifier et supprimer une catégorie -->
-        <button (click)="selectCategory(category)">Modifier</button>
-        <button (click)="deleteCategory(category)">Supprimer</button>
-      </td>
-    </tr>
+    @for (category of categories$ | async; track category?.name){
+      <tr>
+        <td>{{ category?.name }}</td>
+        <td>{{ category?.description }}</td>
+        <td>
+          <!-- Boutons d'action pour modifier et supprimer une catégorie -->
+          <button (click)="selectCategory(category)">Modifier</button>
+          <button (click)="deleteCategory(category)">Supprimer</button>
+        </td>
+      </tr>
+    }
+    @empty {
+      <p>Aucune donnée trouvée</p>
+    }
   </tbody>
 </table>
 
-<div *ngIf="selectedCategory">
-  <h3>Modifier la catégorie</h3>
-  <form (submit)="updateCategory()">
-    <label>Nom :</label>
-    <input
-      type="text"
-      [(ngModel)]="selectedCategory.name"
-      name="name"
-      required
-    /><br />
-    <label>Description :</label>
-    <input
-      type="text"
-      [(ngModel)]="selectedCategory.description"
-      name="description"
-      required
-    /><br />
-    <button type="submit">Enregistrer</button>
-    <button type="button" (click)="clearSelectedCategory()">Annuler</button>
-  </form>
-</div>
+@if(selectedCategory) {
+  <div >
+    <h3>Modifier la catégorie</h3>
+    <form (submit)="updateCategory()">
+      <label>Nom :</label>
+      <input
+        type="text"
+        [(ngModel)]="selectedCategory.name"
+        name="name"
+        required
+      /><br />
+      <label>Description :</label>
+      <input
+        type="text"
+        [(ngModel)]="selectedCategory.description"
+        name="description"
+        required
+      /><br />
+      <button type="submit">Enregistrer</button>
+      <button type="button" (click)="clearSelectedCategory()">Annuler</button>
+    </form>
+  </div>
+} @else {
+  <div>Aucune categorie sélectionnée</div>
+}
+
