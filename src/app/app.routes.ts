@@ -12,9 +12,6 @@ export const routes: Routes = [
     { path: 'header', component: HeaderComponent},
     { path: 'product/:id', component: DetailsComponent},
     { path: 'contact', component: ContactComponent},
-    { path: 'panier', component: PanierComponent},
+    { path: 'panier', component: PanierComponent}
 
-    // { path: 'favorites', component: FavoriteListComponent },
-    // { path: 'login', component: LoginComponent },
-    // { path: 'add-pokemon', component: AddPokemonComponent }
 ];
