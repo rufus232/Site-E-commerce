@@ -1,11 +1,4 @@
 import { Routes } from '@angular/router';
-<<<<<<< HEAD
-import { UserPageComponent } from './user-page/user-page.component';
-
-export const routes: Routes = [
-    /* ajouter les paths */
-    {path: 'myaccount', component: UserPageComponent},
-=======
 import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 import { HeaderComponent } from './header/header.component';
 import { DetailsComponent } from './details/details.component';
@@ -21,5 +14,4 @@ export const routes: Routes = [
     { path: 'contact', component: ContactComponent},
     { path: 'panier', component: PanierComponent}
 
->>>>>>> welcome-page
 ];
