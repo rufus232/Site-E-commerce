@@ -1,25 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable, throwError  } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { Product } from '../interface/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private products: Product[] = [
-    { id: 1, name: 'Product 1', description: 'Description of Product 1', price: 99.99 },
-    { id: 2, name: 'Product 2', description: 'Description of Product 2', price: 149.99 },
-    { id: 3, name: 'Product 3', description: 'Description of Product 3', price: 199.99 }
-  ];
+  private apiUrl = 'http://localhost:8000/api/productss'; 
+
+  constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
-    return of(this.products);
+    return this.http.get<any>(this.apiUrl).pipe(
+      map((response: any) => response['hydra:member'] as Product[]),
+      catchError((error: any) => {
+        console.error('Erreur lors de la récupération de la liste des produits', error);
+        return throwError(error);
+      })
+    );
   }
 
-  getProductById(id: number): Observable<Product | undefined> {
-    const product = this.products.find(product => product.id === id);
-    return of(product);
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.apiUrl}/${id}`).pipe(
+      catchError((error: any) => {
+        console.error(`Erreur lors de la récupération du produit avec l'ID ${id}`, error);
+        return throwError(error);
+      })
+    );
   }
 }
