@@ -36,60 +36,6 @@
             transform: translateY(-5px);
         }
 
-        .card-image {
-            width: 100%;
-            height: 200px;
-            background-image: url('https://img01.ztat.net/article/spp-media-p1/2b344a535cff478fad4219a2025cbd41/5b96a77fdc4a45bcba11d6209aa18d82.jpg?imwidth=762');
-            background-size: cover;
-            background-position: center;
-        }
-        .card-image2 {
-          width: 100%;
-          height: 200px;
-          background-image: url('https://img01.ztat.net/article/spp-media-p1/59c4a1cbd62d41159c75677e9a5fe869/afcb006d75f54509b4c62d431540fe03.jpg?imwidth=1800&filter=packshot');
-          background-size: cover;
-          background-position: center;
-      }
-      .card-image3 {
-        width: 100%;
-        height: 200px;
-        background-image: url('https://media.sneakids.fr/catalog/product/cache/image/1800x/9df78eab33525d08d6e5fb8d27136e95/a/d/adidas-originals_fz2085_1_footwear_photography_side_lateral_center_view_white_000.jpg');
-        background-size: cover;
-        background-position: center;
-    }
-    .card-image4 {
-      width: 100%;
-      height: 200px;
-      background-image: url('https://img01.ztat.net/article/spp-media-p1/7f669f2d74433d27b28ce9e133a5c41e/ad81ceefbe39468ebd104e0abe8b7f17.jpg?imwidth=156&filter=packshot');
-      background-size: cover;
-      background-position: center;
-  }
-  .card-image5 {
-    width: 100%;
-    height: 200px;
-    background-image: url('https://img01.ztat.net/article/spp-media-p1/9dcd678ed03c4ea387caf05cf51f25e1/f210582704804277b085d842463a3de8.jpg?imwidth=762&filter=packshot');
-    background-size: cover;
-    background-position: center;
-}.card-image6 {
-  width: 100%;
-  height: 200px;
-  background-image: url('https://static.privatesportshop.com/img/p/2618010-8034881-thickbox.jpg');
-  background-size: cover;
-  background-position: center;
-}.card-image7 {
-  width: 100%;
-  height: 200px;
-  background-image: url('https://lindex-shop.fr/wp-content/uploads/2024/04/IMG_8197.jpeg');
-  background-size: cover;
-  background-position: center;
-}.card-image8 {
-  width: 100%;
-  height: 200px;
-  background-image: url('https://img.eobuwie.cloud/eob_product_656w_656h(a/d/d/c/addce8a874a213c1e9f43ab1d3a9069827bba3f3_21_0196432922260_rz.jpg,jpg)/sneakers-new-balance-mr530ca-nb-navy-0000304041419.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
         .card-content {
             padding: 20px;
         }
@@ -130,84 +76,16 @@
 
 <body>
 
-<div class="produits">
-  <div class="card">
-    <div class="card-image"></div>
-    <div class="card-content">
-        <h2 class="card-title">ADICOLOR CLASSICS FIREBIRD TRACK - Blouson Bomber</h2>
-        <p class="card-description">Description du produit qui peut être assez longue pour s'étendre sur plusieurs lignes.</p>
-        <p class="card-price">€ 63.95</p>
-        <a href="#" class="btn-add-to-cart">Ajouter au Panier</a>
+  <div class="produits">
+    <div *ngFor="let product of products" class="card">
+      <div class="card-content">
+        <h2 class="card-title">{{ product.name }}</h2>
+        <p class="card-description">{{ product.description }}</p>
+        <p class="card-price">{{ product.price | currency }}</p>
+        <a [routerLink]="['/product', product.id]" class="btn-add-to-cart">Voir les détails</a>
+      </div>
     </div>
-</div>
-<div class="card">
-  <div class="card-image2"></div>
-  <div class="card-content">
-      <h2 class="card-title">adidas Originals
-        CAMPUS 00S - Baskets bassess</h2>
-      <p class="card-description">Description du produit qui peut être assez longue pour s'étendre sur plusieurs lignes.</p>
-      <p class="card-price">€ 49.99</p>
-      <a href="#" class="btn-add-to-cart">Ajouter au Panier</a>
   </div>
-</div>
-<div class="card">
-  <div class="card-image3"></div>
-  <div class="card-content">
-      <h2 class="card-title">Baskets mi-haute enfant adidas Originals Forum</h2>
-      <p class="card-description">Description du produit qui peut être assez longue pour s'étendre sur plusieurs lignes.</p>
-      <p class="card-price">€ 109.99</p>
-      <a href="#" class="btn-add-to-cart">Ajouter au Panier</a>
-  </div>
-
-</div>
-<div class="card">
-  <div class="card-image4"></div>
-  <div class="card-content">
-      <h2 class="card-title">Baskets mi-haute enfant adidas Originals Forum</h2>
-      <p class="card-description">Description du produit qui peut être assez longue pour s'étendre sur plusieurs lignes.</p>
-      <p class="card-price">€ 109.99</p>
-      <a href="#" class="btn-add-to-cart">Ajouter au Panier</a>
-  </div>
-
-</div><div class="card">
-  <div class="card-image5"></div>
-  <div class="card-content">
-      <h2 class="card-title">New Balance
-        9060 UNISEX - Baskets basses</h2>
-      <p class="card-description">Description du produit qui peut être assez longue pour s'étendre sur plusieurs lignes.</p>
-      <p class="card-price">€ 109.99</p>
-      <a href="#" class="btn-add-to-cart">Ajouter au Panier</a>
-  </div>
-
-</div><div class="card">
-  <div class="card-image6"></div>
-  <div class="card-content">
-      <h2 class="card-title">Baskets mi-haute enfant adidas Originals Forum</h2>
-      <p class="card-description">Description du produit qui peut être assez longue pour s'étendre sur plusieurs lignes.</p>
-      <p class="card-price">€ 109.99</p>
-      <a href="#" class="btn-add-to-cart">Ajouter au Panier</a>
-  </div>
-
-</div><div class="card">
-  <div class="card-image7"></div>
-  <div class="card-content">
-      <h2 class="card-title">Baskets mi-haute enfant adidas Originals Forum</h2>
-      <p class="card-description">Description du produit qui peut être assez longue pour s'étendre sur plusieurs lignes.</p>
-      <p class="card-price">€ 109.99</p>
-      <a href="#" class="btn-add-to-cart">Ajouter au Panier</a>
-  </div>
-
-</div><div class="card">
-  <div class="card-image8"></div>
-  <div class="card-content">
-      <h2 class="card-title">Baskets mi-haute enfant adidas Originals Forum</h2>
-      <p class="card-description">Description du produit qui peut être assez longue pour s'étendre sur plusieurs lignes.</p>
-      <p class="card-price">€ 109.99</p>
-      <a href="#" class="btn-add-to-cart">Ajouter au Panier</a>
-  </div>
-
-</div>
-</div>
 
 </body>
 </html>
